@@ -69,7 +69,7 @@ void OAuth2::startLogin(bool bForce)
     {
         QMessageBox::warning(m_pParent, "Warning",
                              "To work with application you need to register your own application in <b>Google</b>.\n"
-                             "Learn more from <a href='http://code.google.com/p/qt-google-tasks/wiki/HowToRegisterYourAppIicationInGoogle'>here</a>");
+                             "Learn more from <a href='http://code.google.com/p/qt-google-calendar/wiki/HowToRegisterYourApplicationInGoogle'>here</a>");
         return;
     }
 
