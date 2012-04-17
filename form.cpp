@@ -310,9 +310,14 @@ void Form::updateEvent()
     if(ui->timeGroupBox->isChecked())
     {
         QDateTime startDT(ui->startDateEdit->date(), ui->startTimeEdit->time());
-        startData["dateTime"] = startDT.toUTC().toString(Qt::ISODate)+"Z";
         QDateTime endDT(ui->endDateEdit->date(), ui->endTimeEdit->time());
+#if QT_VERSION >= 0x040800
+        startData["dateTime"] = startDT.toUTC().toString(Qt::ISODate);
+        endData["dateTime"] = endDT.toUTC().toString(Qt::ISODate);
+#else
+        startData["dateTime"] = startDT.toUTC().toString(Qt::ISODate)+"Z";
         endData["dateTime"] = endDT.toUTC().toString(Qt::ISODate)+"Z";
+#endif
     }
     else
     {

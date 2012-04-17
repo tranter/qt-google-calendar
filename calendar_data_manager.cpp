@@ -221,7 +221,6 @@ void CalendarDataManager::deleteEvent(const QString& access_token, const QString
     QNetworkRequest request;
     request.setUrl(url);
     request.setRawHeader("Authorization", QString("OAuth %1").arg(access_token).toLatin1());
-    request.setRawHeader("X-JavaScript-User-Agent", "Google APIs Explorer");
 
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_pNetworkAccessManager->deleteResource(request);
