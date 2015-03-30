@@ -43,7 +43,13 @@ void CalendarDataManager::replyFinished(QNetworkReply * reply)
     QJson::Parser parser;
     bool ok;
     // json is a QString containing the data to convert
+#if QT_VERSION >= 0x050000
+    // Qt5 code
+    QVariant result = parser.parse (json.toUtf8(), &ok);
+#else
+    // Qt4 code
     QVariant result = parser.parse (json.toLatin1(), &ok);
+#endif
 
     if(!ok)
     {
