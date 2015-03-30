@@ -92,7 +92,15 @@ void CalendarDataManager::getEventsForCalendar(const QString& access_token, cons
     QString s = QString("https://www.googleapis.com/calendar/v3/calendars/%1/events").arg(calID); //?access_token=%2").arg(calID).arg(access_token);
 
     QUrl url;
+
+#if QT_VERSION >= 0x050000
+    // Qt5 code
+    url = QUrl::fromEncoded(QUrl::toPercentEncoding(s, "/:"));
+#else
+    // Qt4 code
     url.setEncodedUrl(QUrl::toPercentEncoding(s, "/:"));
+#endif
+
 
     QNetworkRequest request;
     request.setUrl(url);
@@ -133,7 +141,13 @@ void CalendarDataManager::deleteCalendar(const QString& access_token, const QStr
     QString s = QString("https://www.googleapis.com/calendar/v3/calendars/%1").arg(calID);
 
     QUrl url;
+#if QT_VERSION >= 0x050000
+    // Qt5 code
+    url = QUrl::fromEncoded(QUrl::toPercentEncoding(s, "/:"));
+#else
+    // Qt4 code
     url.setEncodedUrl(QUrl::toPercentEncoding(s, "/:"));
+#endif
 
     QNetworkRequest request;
     request.setUrl(url);
@@ -149,7 +163,13 @@ void CalendarDataManager::createEvent(const QString& access_token, const QString
 {
     QString s = QString("https://www.googleapis.com/calendar/v3/calendars/%1/events").arg(calID);
     QUrl url;
+#if QT_VERSION >= 0x050000
+    // Qt5 code
+    url = QUrl::fromEncoded(QUrl::toPercentEncoding(s, "/:"));
+#else
+    // Qt4 code
     url.setEncodedUrl(QUrl::toPercentEncoding(s, "/:"));
+#endif
 
     QNetworkRequest request;
     request.setUrl(url);
@@ -196,7 +216,13 @@ void CalendarDataManager::moveEvent(const QString& access_token, const QString &
 {
     QString s = QString("https://www.googleapis.com/calendar/v3/calendars/%1/events/%2/move?destination=%3").arg(calID).arg(eventID).arg(destinationCalID);
     QUrl url;
-    url.setEncodedUrl(QUrl::toPercentEncoding(s, "/:?="));
+#if QT_VERSION >= 0x050000
+    // Qt5 code
+    url = QUrl::fromEncoded(QUrl::toPercentEncoding(s, "/:"));
+#else
+    // Qt4 code
+    url.setEncodedUrl(QUrl::toPercentEncoding(s, "/:"));
+#endif
 
     QNetworkRequest request;
     request.setUrl(url);
@@ -216,7 +242,7 @@ void CalendarDataManager::deleteEvent(const QString& access_token, const QString
     QString s = QString("https://www.googleapis.com/calendar/v3/calendars/%1/events/%2").arg(calID).arg(eventID);
 
     QUrl url;
-    url.setEncodedUrl(QUrl::toPercentEncoding(s, "/:"));
+    url = QUrl::fromEncoded(QUrl::toPercentEncoding(s, "/:"));
 
     QNetworkRequest request;
     request.setUrl(url);
@@ -254,7 +280,13 @@ void CalendarDataManager::updateEvent(const QString& access_token, const QString
 {
   QString s = QString("https://www.googleapis.com/calendar/v3/calendars/%1/events/%2").arg(calID).arg(eventID);
   QUrl url;
-  url.setEncodedUrl(QUrl::toPercentEncoding(s, "/:"));
+#if QT_VERSION >= 0x050000
+    // Qt5 code
+    url = QUrl::fromEncoded(QUrl::toPercentEncoding(s, "/:"));
+#else
+    // Qt4 code
+    url.setEncodedUrl(QUrl::toPercentEncoding(s, "/:"));
+#endif
 
   QNetworkRequest request;
   request.setUrl(url);
@@ -276,7 +308,13 @@ void CalendarDataManager::updateCalendar(const QString& access_token, const QStr
 {
     QString s = QString("https://www.googleapis.com/calendar/v3/calendars/%1").arg(calID);
     QUrl url;
+#if QT_VERSION >= 0x050000
+    // Qt5 code
+    url = QUrl::fromEncoded(QUrl::toPercentEncoding(s, "/:"));
+#else
+    // Qt4 code
     url.setEncodedUrl(QUrl::toPercentEncoding(s, "/:"));
+#endif
 
     QNetworkRequest request;
     request.setUrl(url);
